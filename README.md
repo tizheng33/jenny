@@ -1,3 +1,3 @@
-for jenny samara chavez
+for jenny
 
 from tim
