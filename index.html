@@ -1,42 +1,19 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Together Again Countdown!</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+  <meta charset="utf-8" />
+  <title>Countdown to Berkeley</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+  <link rel="stylesheet" href="style.css" />
 </head>
+<a href="countdown.html" id="countdown-link">Go to Countdown</a>
 <body>
-    <div class="container">
-        <div class="countdown-section">
-            <h1>We'll Be Together Again In:</h1>
-            <div id="countdown" class="countdown-display">
-                <div class="time-unit">
-                    <span id="days">00</span>
-                    <span class="label">Days</span>
-                </div>
-                <div class="time-unit">
-                    <span id="hours">00</span>
-                    <span class="label">Hours</span>
-                </div>
-                <div class="time-unit">
-                    <span id="minutes">00</span>
-                    <span class="label">Minutes</span>
-                </div>
-                <div class="time-unit">
-                    <span id="seconds">00</span>
-                    <span class="label">Seconds</span>
-                </div>
-            </div>
-        </div>
-        <div class="map-section">
-            <h2>Our Journey Back to Berkeley</h2>
-            <div id="map"></div>
-        </div>
-    </div>
 
-    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
-    <script src="script.js"></script>
+<div id="countdown">Days left: <span id="days-left"></span></div>
+<div id="map"></div>
+
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+<script src="script.js"></script>
 </body>
 </html>
