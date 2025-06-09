@@ -52,3 +52,9 @@ html, body, #map {
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
 }
 
+/* style.css */
+.rounded-leaflet-icon {
+    border-radius: 50%; /* This will make the icon perfectly circular */
+    /* If you want rounded corners but not a perfect circle, use a pixel value: */
+    /* border-radius: 5px; */
+}

@@ -98,15 +98,17 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 
 // Custom icons
 const iconMe = L.icon({
-    iconUrl: 'https://cdn-icons-png.flaticon.com/512/194/194938.png',
+    iconUrl: 'tim.png',
     iconSize: [40, 40],
-    iconAnchor: [20, 40] // Anchor at the bottom center of the icon
+    iconAnchor: [20, 40],
+    className: 'rounded-leaflet-icon' // Add this line
 });
 
 const iconHer = L.icon({
-    iconUrl: 'https://cdn-icons-png.flaticon.com/512/194/194937.png',
+    iconUrl: 'jenny.png',
     iconSize: [40, 40],
-    iconAnchor: [20, 40] // Anchor at the bottom center of the icon
+    iconAnchor: [20, 40],
+    className: 'rounded-leaflet-icon' // Add this line
 });
 
 // Add markers
