@@ -2,6 +2,7 @@ html, body, #map {
   height: 100%;
   margin: 0;
   padding: 0;
+  padding-bottom: 55px;
 }
 
 #countdown {
@@ -16,9 +17,9 @@ html, body, #map {
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
 }
 
-#distance { /* Added this style block */
+#distance {
   position: absolute;
-  top: 60px; /* Adjusted position to be below countdown */
+  top: 60px;
   left: 10px;
   background: white;
   padding: 10px 15px;
@@ -30,7 +31,7 @@ html, body, #map {
 
 #days-elapsed-display {
   position: absolute;
-  top: 110px; /* Below distance */
+  top: 110px;
   left: 10px;
   background: white;
   padding: 10px 15px;
@@ -42,7 +43,7 @@ html, body, #map {
 
 #miles-elapsed-display {
   position: absolute;
-  top: 160px; /* Below days elapsed */
+  top: 160px;
   left: 10px;
   background: white;
   padding: 10px 15px;
@@ -52,9 +53,326 @@ html, body, #map {
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
 }
 
-/* style.css */
+#her-quote-bubble {
+  position: absolute;
+  background: white;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  padding: 8px 12px;
+  font-family: sans-serif;
+  font-size: 0.9em;
+  white-space: nowrap;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  z-index: 999;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+  transform: translate(25px, -100%);
+  transform-origin: 0% 50%;
+}
+
+#her-quote-bubble::before {
+  content: '';
+  position: absolute;
+  left: -12px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 0;
+  height: 0;
+  border-top: 8px solid transparent;
+  border-bottom: 8px solid transparent;
+  border-right: 12px solid white;
+  z-index: 1000;
+}
+
+#her-quote-bubble::after {
+  content: '';
+  position: absolute;
+  left: -13px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 0;
+  height: 0;
+  border-top: 9px solid transparent;
+  border-bottom: 9px solid transparent;
+  border-right: 13px solid #ccc;
+  z-index: 999;
+}
+
 .rounded-leaflet-icon {
-    border-radius: 50%; /* This will make the icon perfectly circular */
-    /* If you want rounded corners but not a perfect circle, use a pixel value: */
-    /* border-radius: 5px; */
+    border-radius: 50%;
+}
+
+/* Music Player Bar Styles */
+.music-player-bar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: rgba(24, 24, 24, 0.5);
+    color: #b3b3b3;
+    padding: 5px 12px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 -1px 8px rgba(0, 0, 0, 0.4);
+    z-index: 1001;
+    font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    min-height: 45px;
+    box-sizing: border-box;
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+}
+
+.music-player-bar .left-section,
+.music-player-bar .center-section,
+.music-player-bar .right-section {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.music-player-bar .left-section {
+    flex: 1;
+    justify-content: flex-start;
+}
+
+.music-player-bar .center-section {
+    flex: 2;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.music-player-bar .right-section {
+    flex: 1;
+    justify-content: flex-end;
+}
+
+
+/* Song Info (left section) */
+.music-player-bar .song-info {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.music-player-bar .album-art {
+    width: 35px;
+    height: 35px;
+    border-radius: 2px;
+    background-color: #555;
+    object-fit: cover;
+}
+
+.music-player-bar .song-details {
+    display: flex;
+    flex-direction: column;
+}
+
+.music-player-bar #current-song-title {
+    font-size: 0.8em;
+    font-weight: bold;
+    color: white;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 130px;
+}
+
+.music-player-bar #current-song-artist {
+    font-size: 0.7em;
+    color: #b3b3b3;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 130px;
+}
+
+
+/* Controls (center section, top row) */
+.music-player-bar .controls {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding-top: 3px;
+}
+
+.music-player-bar button {
+    background: none;
+    border: none;
+    color: #b3b3b3;
+    font-size: 16px;
+    cursor: pointer;
+    padding: 0;
+    transition: color 0.2s ease;
+}
+
+.music-player-bar button:hover {
+    color: white;
+}
+
+.music-player-bar #play-pause-btn {
+    font-size: 28px;
+    color: white;
+    border-radius: 50%;
+    border: 1px solid white;
+    padding: 3px;
+    line-height: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.music-player-bar #play-pause-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 7px rgba(255, 255, 255, 0.3);
+}
+
+/* Progress bar and time */
+.music-player-bar .progress-container {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    gap: 6px;
+}
+
+.music-player-bar #seek-slider {
+    flex-grow: 1;
+    height: 2px;
+    background: transparent; /* This is correct. JS sets the gradient. */
+    outline: none;
+    border-radius: 1px;
+    cursor: pointer;
+    -webkit-appearance: none;
+    appearance: none;
+}
+
+/* Webkit (Chrome/Safari) Seek Slider Track */
+.music-player-bar #seek-slider::-webkit-slider-runnable-track {
+    background: transparent; /* NEW: Make this transparent */
+    height: 2px;
+    border-radius: 1px;
+}
+
+/* Firefox Seek Slider Track */
+.music-player-bar #seek-slider::-moz-range-track {
+    background: transparent; /* NEW: Make this transparent */
+    height: 2px;
+    border-radius: 1px;
+}
+
+/* Webkit (Chrome/Safari) Seek Slider Thumb */
+.music-player-bar #seek-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 8px;
+    height: 8px;
+    background: white;
+    border-radius: 50%;
+    cursor: grab;
+    margin-top: -3px;
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
+    opacity: 0;
+    transition: opacity 0.2s ease-in-out;
+    z-index: 2;
+    position: relative;
+}
+
+/* Firefox Seek Slider Thumb */
+.music-player-bar #seek-slider::-moz-range-thumb {
+    width: 8px;
+    height: 8px;
+    background: white;
+    border-radius: 50%;
+    cursor: grab;
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
+    opacity: 0;
+    transition: opacity 0.2s ease-in-out;
+    z-index: 2;
+}
+
+/* Show Seek Slider Thumb on Hover */
+.music-player-bar #seek-slider:hover::-webkit-slider-thumb {
+    opacity: 1;
+}
+
+.music-player-bar #seek-slider:hover::-moz-range-thumb {
+    opacity: 1;
+}
+
+.music-player-bar .time-info {
+    font-size: 0.7em;
+    color: #b3b3b3;
+    min-width: 55px;
+    text-align: center;
+}
+
+
+/* Volume control */
+.music-player-bar .volume-controls {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.music-player-bar #volume-slider {
+    width: 60px;
+    height: 2px;
+    background: transparent; /* This is correct. JS sets the gradient. */
+    outline: none;
+    border-radius: 1px;
+    cursor: pointer;
+    -webkit-appearance: none;
+    appearance: none;
+}
+
+/* Webkit (Chrome/Safari) Volume Slider Track */
+.music-player-bar #volume-slider::-webkit-slider-runnable-track {
+    background: transparent; /* NEW: Make this transparent */
+    height: 2px;
+    border-radius: 1px;
+}
+
+/* Firefox Volume Slider Track */
+.music-player-bar #volume-slider::-moz-range-track {
+    background: transparent; /* NEW: Make this transparent */
+    height: 2px;
+    border-radius: 1px;
+}
+
+/* Webkit (Chrome/Safari) Volume Slider Thumb */
+.music-player-bar #volume-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 8px;
+    height: 8px;
+    background: white;
+    border-radius: 50%;
+    cursor: grab;
+    margin-top: -3px;
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
+    opacity: 0;
+    transition: opacity 0.2s ease-in-out;
+    z-index: 2;
+    position: relative;
+}
+
+/* Firefox Volume Slider Thumb */
+.music-player-bar #volume-slider::-moz-range-thumb {
+    width: 8px;
+    height: 8px;
+    background: white;
+    border-radius: 50%;
+    cursor: grab;
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
+    opacity: 0;
+    transition: opacity 0.2s ease-in-out;
+    z-index: 2;
+}
+
+/* Show Volume Slider Thumb on Hover */
+.music-player-bar #volume-slider:hover::-webkit-slider-thumb {
+    opacity: 1;
+}
+
+.music-player-bar #volume-slider:hover::-moz-range-thumb {
+    opacity: 1;
 }
