@@ -1,0 +1,54 @@
+html, body, #map {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+#countdown {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background: white;
+  padding: 10px 15px;
+  border-radius: 10px;
+  font-family: sans-serif;
+  z-index: 1000;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+#distance { /* Added this style block */
+  position: absolute;
+  top: 60px; /* Adjusted position to be below countdown */
+  left: 10px;
+  background: white;
+  padding: 10px 15px;
+  border-radius: 10px;
+  font-family: sans-serif;
+  z-index: 1000;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+#days-elapsed-display {
+  position: absolute;
+  top: 110px; /* Below distance */
+  left: 10px;
+  background: white;
+  padding: 10px 15px;
+  border-radius: 10px;
+  font-family: sans-serif;
+  z-index: 1000;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+#miles-elapsed-display {
+  position: absolute;
+  top: 160px; /* Below days elapsed */
+  left: 10px;
+  background: white;
+  padding: 10px 15px;
+  border-radius: 10px;
+  font-family: sans-serif;
+  z-index: 1000;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
