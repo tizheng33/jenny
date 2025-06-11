@@ -69,30 +69,42 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 const iconMe = L.icon({
     iconUrl: 'tim.png',
     iconSize: [40, 40],
-    iconAnchor: [20, 40],
+    iconAnchor: [20, 35], // Adjusted to be a little lower
     className: 'rounded-leaflet-icon'
 });
 
 const iconHer = L.icon({
     iconUrl: 'jenny.png',
     iconSize: [40, 40],
-    iconAnchor: [20, 40],
+    iconAnchor: [20, 35], // Adjusted to be a little lower
     className: 'rounded-leaflet-icon'
 });
 
-const markerMe = L.marker(currentSF, { icon: iconMe }).addTo(map).bindPopup("me");
-const herMarker = L.marker(currentAnaheim, { icon: iconHer }).addTo(map).bindPopup("my love ❤️");
-L.marker(berkeley, { icon: L.icon({ iconUrl: 'https://cdn-icons-png.flaticon.com/512/68/68798.png', iconSize: [30, 30], iconAnchor: [15, 30] }) }).addTo(map).bindPopup("rochdale");
+const iconUs = L.icon({
+    iconUrl: 'icons/us.png',
+    iconSize: [50, 50],
+    iconAnchor: [20, 35], // Adjusted to be a little lower
+    className: 'rounded-leaflet-icon'
+});
 
+const markerMe = L.marker(currentSF, { icon: iconMe }).addTo(map);
+const herMarker = L.marker(currentAnaheim, { icon: iconHer }).addTo(map);
+const markerUs = L.marker(berkeley, { icon: iconUs }).addTo(map);
 
 // --- Text Bubble Logic for 'her' sprite ---
 
 const herQuotes = [
-  "Can't wait to see you!",
-  "Missing you already!",
-  "Counting down the days!",
-  "Soon, my love, soon!",
-  "Our adventure awaits!"
+  "moby dick the author?",
+  "carbonated not sparkly",
+  "nuh uhhhh",
+  "hey",
+  "well yes",
+  "the chinese guy named confectious?",
+  "many have said",
+  "you swane bolt",
+  "its like bureaucrats",
+  "theyre like cherries but not cherries",
+  "put me on an epilator"
 ];
 let currentQuoteIndex = 0;
 
@@ -124,7 +136,7 @@ updateQuoteBubblePosition();
 quoteBubble.style.opacity = 1;
 map.on('move', updateQuoteBubblePosition);
 map.on('load', updateQuoteBubblePosition);
-setInterval(rotateQuotes, 5000);
+setInterval(rotateQuotes, 6000);
 
 
 // --- Music Player Logic ---
@@ -144,12 +156,15 @@ let isShuffled = false;
 let isRepeating = 'none'; // 'none', 'one', 'all'
 let originalPlaylistOrder = [...playlist];
 
-// Get elements
+// Get elements (select the <i> tag within the button for icon manipulation)
 const playPauseBtn = document.getElementById('play-pause-btn');
+const playPauseIcon = playPauseBtn.querySelector('i'); // Get the <i> tag
 const prevBtn = document.getElementById('prev-btn');
 const nextBtn = document.getElementById('next-btn');
 const shuffleBtn = document.getElementById('shuffle-btn');
+const shuffleIcon = shuffleBtn.querySelector('i'); // Get the <i> tag
 const repeatBtn = document.getElementById('repeat-btn');
+const repeatIcon = repeatBtn.querySelector('i'); // Get the <i> tag
 const currentSongTitle = document.getElementById('current-song-title');
 const currentSongArtist = document.getElementById('current-song-artist');
 const albumArt = document.getElementById('album-art');
@@ -157,7 +172,8 @@ const seekSlider = document.getElementById('seek-slider');
 const currentTimeDisplay = document.getElementById('current-time');
 const durationDisplay = document.getElementById('duration');
 const volumeSlider = document.getElementById('volume-slider');
-const volumeIcon = document.getElementById('volume-icon');
+const volumeIconBtn = document.getElementById('volume-icon'); // Renamed to avoid conflict with `volumeIcon` variable
+const volumeIcon = volumeIconBtn.querySelector('i'); // Get the <i> tag
 
 // Helper function to format time
 function formatTime(seconds) {
@@ -181,8 +197,6 @@ function updateVolumeSliderFill() {
 
 
 // --- Core Playback Control Functions ---
-// These ensure UI and internal 'isPlaying' state are consistent with audio.play()/pause() results
-
 function playAudio() {
     if (playlist.length === 0) {
         console.warn("Attempted to play with empty playlist.");
@@ -195,17 +209,19 @@ function playAudio() {
     const playPromise = audio.play();
     if (playPromise !== undefined) {
         playPromise.then(() => {
-            playPauseBtn.textContent = '⏸️';
-            isPlaying = true; // Audio is now truly playing
+            playPauseIcon.classList.remove('fa-play'); // Remove play icon
+            playPauseIcon.classList.add('fa-pause');  // Add pause icon
+            isPlaying = true;
             // console.log("Audio play successful.");
         }).catch(error => {
-            playPauseBtn.textContent = '▶️';
-            isPlaying = false; // Audio failed to play
+            playPauseIcon.classList.remove('fa-pause'); // Remove pause icon
+            playPauseIcon.classList.add('fa-play');   // Add play icon
+            isPlaying = false;
             console.error("Audio play failed (Promise rejected):", error);
-            // Inform user if necessary, e.g., "Autoplay blocked by browser."
         });
     } else { // Fallback for older browsers that don't return a Promise
-        playPauseBtn.textContent = '⏸️';
+        playPauseIcon.classList.remove('fa-play');
+        playPauseIcon.classList.add('fa-pause');
         isPlaying = true;
         // console.warn("audio.play() did not return a Promise. Assuming success.");
     }
@@ -213,8 +229,9 @@ function playAudio() {
 
 function pauseAudio() {
     audio.pause();
-    playPauseBtn.textContent = '▶️';
-    isPlaying = false; // Audio is now truly paused
+    playPauseIcon.classList.remove('fa-pause');
+    playPauseIcon.classList.add('fa-play');
+    isPlaying = false;
     // console.log("Audio paused.");
 }
 
@@ -225,7 +242,8 @@ function loadTrack(index) {
         currentSongTitle.textContent = 'No songs in playlist';
         currentSongArtist.textContent = '';
         albumArt.src = 'https://via.placeholder.com/50x50?text=No+Art';
-        playPauseBtn.textContent = '▶️';
+        playPauseIcon.classList.remove('fa-pause');
+        playPauseIcon.classList.add('fa-play');
         isPlaying = false;
         audio.src = '';
         seekSlider.value = 0;
@@ -254,12 +272,10 @@ function loadTrack(index) {
         durationDisplay.textContent = formatTime(audio.duration);
         seekSlider.max = audio.duration;
         updateSeekSliderFill();
-        // If it was playing, try to play the new track immediately
-        if (isPlaying && audio.paused) { // Check if it was playing and browser auto-paused new track
+        if (isPlaying && audio.paused) {
             playAudio();
         }
     };
-    // If we loaded a track and it was supposed to be playing, re-assert play
     if (isPlaying) {
         playAudio();
     }
@@ -267,9 +283,9 @@ function loadTrack(index) {
 
 // Play/Pause toggle (UI button click)
 function togglePlayPause() {
-    if (isPlaying) { // If currently marked as playing
+    if (isPlaying) {
         pauseAudio();
-    } else { // If currently marked as paused
+    } else {
         playAudio();
     }
 }
@@ -293,7 +309,7 @@ function playPrev() {
 
     if (audio.currentTime > 3 || currentTrackPlayingIndex === 0) {
         audio.currentTime = 0;
-        playAudio(); // Re-assert play for current track
+        playAudio();
     } else {
         currentTrackPlayingIndex = (currentTrackPlayingIndex - 1 + playlist.length) % playlist.length;
         loadTrack(currentTrackPlayingIndex);
@@ -305,7 +321,7 @@ function shufflePlaylist() {
     if (isShuffled) {
         playlist.splice(0, playlist.length, ...originalPlaylistOrder);
         isShuffled = false;
-        shuffleBtn.style.color = '#b3b3b3';
+        shuffleIcon.classList.remove('active'); // Remove active class
     } else {
         const shuffled = [...playlist];
         for (let i = shuffled.length - 1; i > 0; i--) {
@@ -314,7 +330,7 @@ function shufflePlaylist() {
         }
         playlist.splice(0, playlist.length, ...shuffled);
         isShuffled = true;
-        shuffleBtn.style.color = '#1DB954';
+        shuffleIcon.classList.add('active'); // Add active class
     }
 
     if (playlist.length > 0) {
@@ -334,18 +350,25 @@ function shufflePlaylist() {
 
 // Repeat functionality
 function toggleRepeat() {
+    repeatIcon.classList.remove('active-all', 'active-one'); // Clear previous states
+
     if (isRepeating === 'none') {
         isRepeating = 'all';
-        repeatBtn.textContent = '🔁';
-        repeatBtn.style.color = '#1DB954';
+        repeatIcon.classList.add('active-all'); // Add active-all class
     } else if (isRepeating === 'all') {
         isRepeating = 'one';
-        repeatBtn.textContent = '🔂';
-        repeatBtn.style.color = '#1DB954';
+        repeatIcon.classList.add('active-one'); // Add active-one class
     } else {
         isRepeating = 'none';
-        repeatBtn.textContent = '🔁';
-        repeatBtn.style.color = '#b3b3b3';
+    }
+
+    // Update Font Awesome icon for repeat modes
+    repeatIcon.classList.remove('fa-redo', 'fa-redo-alt'); // Remove existing repeat icons
+
+    if (isRepeating === 'one') {
+        repeatIcon.classList.add('fa-redo-alt'); // Use fa-redo-alt for repeat one (looks like a 1/arrow)
+    } else { // 'all' or 'none'
+        repeatIcon.classList.add('fa-redo'); // Use fa-redo for repeat all/none
     }
 }
 
@@ -356,16 +379,19 @@ function toggleMute() {
         lastVolume = audio.volume;
         audio.volume = 0;
         volumeSlider.value = 0;
-        volumeIcon.textContent = '🔇';
+        volumeIcon.classList.remove('fa-volume-up', 'fa-volume-down'); // Clear existing
+        volumeIcon.classList.add('fa-volume-mute'); // Add mute icon
     } else {
         audio.volume = lastVolume > 0 ? lastVolume : 0.7;
         volumeSlider.value = audio.volume;
-        if (audio.volume < 0.01) {
-          volumeIcon.textContent = '🔇';
+        // Update volume icon based on restored volume
+        volumeIcon.classList.remove('fa-volume-mute', 'fa-volume-down'); // Clear existing
+        if (audio.volume < 0.01) { // Still very low, show mute
+            volumeIcon.classList.add('fa-volume-mute');
         } else if (audio.volume < 0.5) {
-          volumeIcon.textContent = '🔉';
+            volumeIcon.classList.add('fa-volume-down');
         } else {
-          volumeIcon.textContent = '🔊';
+            volumeIcon.classList.add('fa-volume-up');
         }
     }
     updateVolumeSliderFill();
@@ -378,13 +404,11 @@ prevBtn.addEventListener('click', playPrev);
 nextBtn.addEventListener('click', playNext);
 shuffleBtn.addEventListener('click', shufflePlaylist);
 repeatBtn.addEventListener('click', toggleRepeat);
-volumeIcon.addEventListener('click', toggleMute);
+volumeIconBtn.addEventListener('click', toggleMute); // Use volumeIconBtn as it's the actual button
 
-// This variable will store the time of the audio *before* seeking starts
 let audioTimeBeforeDrag = 0;
 
 audio.addEventListener('timeupdate', () => {
-    // ONLY update slider value and display if user is NOT actively dragging it
     if (seekSlider.dataset.isDragging !== 'true') {
         seekSlider.value = audio.currentTime;
         currentTimeDisplay.textContent = formatTime(audio.currentTime);
@@ -392,89 +416,69 @@ audio.addEventListener('timeupdate', () => {
     }
 });
 
-// Listener for when the browser's audio element actually pauses
 audio.addEventListener('pause', () => {
-    // Only update UI if we didn't explicitly call pauseAudio()
-    // This catches external pauses (e.g., another tab playing audio, or browser policy)
-    // and also captures the pause that might happen *before* seeking to a new time
-    if (isPlaying) { // If our flag says it *should* be playing
-        playPauseBtn.textContent = '▶️'; // Visually show paused
+    if (isPlaying) {
+        playPauseIcon.classList.remove('fa-pause');
+        playPauseIcon.classList.add('fa-play');
         // Do NOT set isPlaying = false here, as we might be pausing *temporarily* for seeking
-        // The isPlaying flag should only be set by togglePlayPause() or play/pauseAudio()
         console.warn("Audio paused by browser/system (isPlaying flag still true).");
     }
 });
-// Listener for when the browser's audio element actually plays
 audio.addEventListener('play', () => {
-    // This catches successful plays after browser blocks, or after seeking
-    if (!isPlaying) { // If our flag says it's not playing, but browser says it is
-        playPauseBtn.textContent = '⏸️'; // Visually show playing
-        isPlaying = true; // Update internal state
-        // console.log("Audio resumed playing (caught by 'play' event).");
+    if (!isPlaying) {
+        playPauseIcon.classList.remove('fa-play');
+        playPauseIcon.classList.add('fa-pause');
+        isPlaying = true;
     }
 });
 
 
 audio.addEventListener('ended', () => {
-    // This logic handles when a track finishes naturally
     if (isRepeating === 'one') {
         audio.currentTime = 0;
-        playAudio(); // Re-start current track
+        playAudio();
     } else if (isRepeating === 'all') {
-        playNext(); // Go to next track (will loop if last)
+        playNext();
     } else {
-        // No repeat, stop playback if it's the last song
         if (currentTrackPlayingIndex === playlist.length - 1) {
-            isPlaying = false; // Mark as not playing
-            playPauseBtn.textContent = '▶️'; // Update UI
-            seekSlider.value = 0; // Reset slider
+            isPlaying = false;
+            playPauseIcon.classList.remove('fa-pause');
+            playPauseIcon.classList.add('fa-play');
+            seekSlider.value = 0;
             currentTimeDisplay.textContent = '0:00';
-            loadTrack(0); // Prepare first song for next play
+            loadTrack(0);
         } else {
-            playNext(); // Otherwise, play next song
+            playNext();
         }
     }
     updateSeekSliderFill();
 });
 
-// User starts dragging seek slider
 seekSlider.addEventListener('mousedown', () => {
     seekSlider.dataset.isDragging = 'true';
-    audioTimeBeforeDrag = audio.currentTime; // Store current time before drag
-    // console.log("Drag started. Audio time before drag:", audioTimeBeforeDrag);
+    audioTimeBeforeDrag = audio.currentTime;
 });
 
-// Update slider visual & display time based on user's drag
-// Audio's currentTime is NOT updated here
 seekSlider.addEventListener('input', () => {
-    currentTimeDisplay.textContent = formatTime(seekSlider.value); // Update time based on slider
-    updateSeekSliderFill(); // Update fill based on slider
-    // console.log(`Dragging: slider.value=${seekSlider.value.toFixed(2)}, displayed=${currentTimeDisplay.textContent}`);
+    currentTimeDisplay.textContent = formatTime(seekSlider.value);
+    updateSeekSliderFill();
 });
 
-// User releases seek slider (mouse up)
 seekSlider.addEventListener('mouseup', () => {
     seekSlider.dataset.isDragging = 'false';
-    audio.currentTime = seekSlider.value; // FINALLY set audio's time
-    // console.log("Drag ended (mouseup). New audio.currentTime:", audio.currentTime.toFixed(2));
-
-    // If it was playing (or intended to be), resume playback
+    audio.currentTime = seekSlider.value;
     if (isPlaying) {
         playAudio();
     } else {
-        // If it was paused, update UI to reflect the new time but keep it paused
         currentTimeDisplay.textContent = formatTime(audio.currentTime);
         updateSeekSliderFill();
     }
 });
 
-// Handle mouseleave in case user drags off the slider and releases mouse
 seekSlider.addEventListener('mouseleave', () => {
-  if (seekSlider.dataset.isDragging === 'true') { // If they were dragging and left
+  if (seekSlider.dataset.isDragging === 'true') {
     seekSlider.dataset.isDragging = 'false';
-    audio.currentTime = seekSlider.value; // Set audio's time to where they left it
-    // console.log("Drag ended (mouseleave). New audio.currentTime:", audio.currentTime.toFixed(2));
-
+    audio.currentTime = seekSlider.value;
     if (isPlaying) {
         playAudio();
     } else {
@@ -488,15 +492,16 @@ seekSlider.addEventListener('mouseleave', () => {
 // Update audio volume when volume slider is moved
 volumeSlider.addEventListener('input', () => {
     audio.volume = volumeSlider.value;
+    // Update volume icon based on current volume
+    volumeIcon.classList.remove('fa-volume-mute', 'fa-volume-down', 'fa-volume-up'); // Clear existing
     if (audio.volume === 0) {
-        volumeIcon.textContent = '🔇';
+        volumeIcon.classList.add('fa-volume-mute');
     } else if (audio.volume < 0.5) {
-        volumeIcon.textContent = '🔉';
+        volumeIcon.classList.add('fa-volume-down');
     } else {
-        volumeIcon.textContent = '🔊';
+        volumeIcon.classList.add('fa-volume-up');
     }
     updateVolumeSliderFill();
-    // console.log(`Volume: slider.value=${volumeSlider.value.toFixed(2)}, audio.volume=${audio.volume.toFixed(2)}`);
 });
 
 // Initial load of the first track
@@ -504,6 +509,17 @@ if (playlist.length > 0) {
     loadTrack(currentTrackPlayingIndex);
     audio.volume = volumeSlider.value;
     updateVolumeSliderFill();
-    // Do NOT call playAudio() here on initial load, as browsers block autoplay without user interaction.
-    // The user will need to click the play button first.
+    // Set initial icon states
+    playPauseIcon.classList.add('fa-play'); // Initial play icon
+    shuffleIcon.classList.remove('active'); // Ensure shuffle is off by default
+    repeatIcon.classList.remove('active-all', 'active-one'); // Ensure repeat is off by default
+    repeatIcon.classList.add('fa-redo'); // Initial repeat icon (all/none)
+    // Set initial volume icon based on actual volume slider value
+    if (audio.volume === 0) {
+        volumeIcon.classList.add('fa-volume-mute');
+    } else if (audio.volume < 0.5) {
+        volumeIcon.classList.add('fa-volume-down');
+    } else {
+        volumeIcon.classList.add('fa-volume-up');
+    }
 }

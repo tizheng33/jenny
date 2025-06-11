@@ -2,7 +2,9 @@ html, body, #map {
   height: 100%;
   margin: 0;
   padding: 0;
-  padding-bottom: 55px;
+  padding-bottom: 48px;
+  font-family: 'Baloo Bhaina 2', cursive;
+  font-weight: 500;
 }
 
 #countdown {
@@ -12,43 +14,39 @@ html, body, #map {
   background: white;
   padding: 10px 15px;
   border-radius: 10px;
-  font-family: sans-serif;
   z-index: 1000;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
 }
 
 #distance {
   position: absolute;
-  top: 60px;
+  top: 70px;
   left: 10px;
   background: white;
   padding: 10px 15px;
   border-radius: 10px;
-  font-family: sans-serif;
   z-index: 1000;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
 }
 
 #days-elapsed-display {
   position: absolute;
-  top: 110px;
+  top: 130px;
   left: 10px;
   background: white;
   padding: 10px 15px;
   border-radius: 10px;
-  font-family: sans-serif;
   z-index: 1000;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
 }
 
 #miles-elapsed-display {
   position: absolute;
-  top: 160px;
+  top: 190px;
   left: 10px;
   background: white;
   padding: 10px 15px;
   border-radius: 10px;
-  font-family: sans-serif;
   z-index: 1000;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
 }
@@ -58,8 +56,7 @@ html, body, #map {
   background: white;
   border: 1px solid #ccc;
   border-radius: 10px;
-  padding: 8px 12px;
-  font-family: sans-serif;
+  padding: 2px 8px;
   font-size: 0.9em;
   white-space: nowrap;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
@@ -67,7 +64,7 @@ html, body, #map {
   pointer-events: none;
   opacity: 0;
   transition: opacity 1s ease-in-out;
-  transform: translate(25px, -100%);
+  transform: translate(25px, -125%);
   transform-origin: 0% 50%;
 }
 
@@ -111,17 +108,18 @@ html, body, #map {
     width: 100%;
     background-color: rgba(24, 24, 24, 0.5);
     color: #b3b3b3;
-    padding: 5px 12px;
+    padding: 4px 12px;
     display: flex;
     align-items: center;
     justify-content: space-between;
     box-shadow: 0 -1px 8px rgba(0, 0, 0, 0.4);
     z-index: 1001;
-    font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    min-height: 45px;
+    font-family: 'Baloo Bhaina 2', cursive;
+    font-weight: 500;
+    min-height: 42px;
     box-sizing: border-box;
-    backdrop-filter: blur(4px);
-    -webkit-backdrop-filter: blur(4px);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(3px);
 }
 
 .music-player-bar .left-section,
@@ -140,7 +138,9 @@ html, body, #map {
 .music-player-bar .center-section {
     flex: 2;
     flex-direction: column;
-    gap: 3px;
+    justify-content: center;
+    gap: 0px;
+    margin-top: 2px;
 }
 
 .music-player-bar .right-section {
@@ -167,12 +167,13 @@ html, body, #map {
 .music-player-bar .song-details {
     display: flex;
     flex-direction: column;
+    align-self: flex-start;
 }
 
 .music-player-bar #current-song-title {
     font-size: 0.8em;
-    font-weight: bold;
-    color: white;
+    font-weight: 700;
+    color: pink;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -181,7 +182,7 @@ html, body, #map {
 
 .music-player-bar #current-song-artist {
     font-size: 0.7em;
-    color: #b3b3b3;
+    color: pink;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -193,40 +194,78 @@ html, body, #map {
 .music-player-bar .controls {
     display: flex;
     align-items: center;
-    gap: 15px;
-    padding-top: 3px;
+    gap: 8px;
+    margin-top: 2px;
 }
 
+/* Base style for all Font Awesome icon buttons */
 .music-player-bar button {
-    background: none;
+    background-color: transparent;
     border: none;
-    color: #b3b3b3;
-    font-size: 16px;
     cursor: pointer;
     padding: 0;
-    transition: color 0.2s ease;
+    transition: color 0.2s ease; /* Transition for Font Awesome color (smooth hover) */
+    color: #b3b3b3;
+    font-size: 14px;
+    outline: none;
+    box-shadow: none; /* Ensure no default box-shadow */
+    filter: none; /* Ensure no default filter */
 }
 
-.music-player-bar button:hover {
-    color: white;
+/* Specific button hover/focus styles: ONLY color change, no outline/border */
+.music-player-bar button:hover,
+.music-player-bar button:focus,
+.music-player-bar button:active {
+    color: pink; /* Icon color becomes white */
+    outline: none;
+    border: none;
 }
 
-.music-player-bar #play-pause-btn {
-    font-size: 28px;
-    color: white;
+
+/* Specific play/pause button overrides */
+#play-pause-btn {
+    font-size: 24px;
+    color: pink; /* Always white for play/pause icon */
     border-radius: 50%;
-    border: 1px solid white;
+    border: none !important;
     padding: 3px;
-    line-height: 1;
+    margin-left: 5px;
+    margin-right: 5px;
     display: flex;
     align-items: center;
     justify-content: center;
+    outline: none !important;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    box-shadow: none; /* Start with no box-shadow by default */
+    background-color: transparent; /* Ensure background is transparent by default */
+    /* NEW: Removed the specific transition for transform/filter here,
+       it will now inherit from the general button transition for color. */
+    transition: color 0.2s ease; /* Ensure color transition still applies */
 }
 
-.music-player-bar #play-pause-btn:hover {
-    transform: scale(1.05);
-    box-shadow: 0 0 7px rgba(255, 255, 255, 0.3);
+/* Play/Pause button hover/focus styles - Now matches other buttons */
+#play-pause-btn:hover,
+#play-pause-btn:focus,
+#play-pause-btn:active {
+    /* REMOVED: transform: scale(1.05); */
+    /* REMOVED: filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.8)); */
+    outline: none !important;
+    border: none !important;
+    background-color: transparent; /* Ensure background stays transparent on hover */
+    /* Color change to white is inherited from .music-player-bar button:hover */
+    /* No box-shadow for play/pause anymore on hover, unless added via general button styles */
 }
+
+
+/* Active states for shuffle and repeat */
+#shuffle-btn.active,
+#repeat-btn.active-all,
+#repeat-btn.active-one {
+    color: #FF69B4; /* Pink for active icons */
+}
+
 
 /* Progress bar and time */
 .music-player-bar .progress-container {
@@ -239,7 +278,7 @@ html, body, #map {
 .music-player-bar #seek-slider {
     flex-grow: 1;
     height: 2px;
-    background: transparent; /* This is correct. JS sets the gradient. */
+    background: transparent;
     outline: none;
     border-radius: 1px;
     cursor: pointer;
@@ -249,14 +288,14 @@ html, body, #map {
 
 /* Webkit (Chrome/Safari) Seek Slider Track */
 .music-player-bar #seek-slider::-webkit-slider-runnable-track {
-    background: transparent; /* NEW: Make this transparent */
+    background: transparent;
     height: 2px;
     border-radius: 1px;
 }
 
 /* Firefox Seek Slider Track */
 .music-player-bar #seek-slider::-moz-range-track {
-    background: transparent; /* NEW: Make this transparent */
+    background: transparent;
     height: 2px;
     border-radius: 1px;
 }
@@ -266,7 +305,7 @@ html, body, #map {
     -webkit-appearance: none;
     width: 8px;
     height: 8px;
-    background: white;
+    background: #FF69B4; /* Pink */
     border-radius: 50%;
     cursor: grab;
     margin-top: -3px;
@@ -281,7 +320,7 @@ html, body, #map {
 .music-player-bar #seek-slider::-moz-range-thumb {
     width: 8px;
     height: 8px;
-    background: white;
+    background: #FF69B4; /* Pink */
     border-radius: 50%;
     cursor: grab;
     box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
@@ -317,7 +356,7 @@ html, body, #map {
 .music-player-bar #volume-slider {
     width: 60px;
     height: 2px;
-    background: transparent; /* This is correct. JS sets the gradient. */
+    background: transparent;
     outline: none;
     border-radius: 1px;
     cursor: pointer;
@@ -327,14 +366,14 @@ html, body, #map {
 
 /* Webkit (Chrome/Safari) Volume Slider Track */
 .music-player-bar #volume-slider::-webkit-slider-runnable-track {
-    background: transparent; /* NEW: Make this transparent */
+    background: transparent;
     height: 2px;
     border-radius: 1px;
 }
 
 /* Firefox Volume Slider Track */
 .music-player-bar #volume-slider::-moz-range-track {
-    background: transparent; /* NEW: Make this transparent */
+    background: transparent;
     height: 2px;
     border-radius: 1px;
 }
@@ -344,7 +383,7 @@ html, body, #map {
     -webkit-appearance: none;
     width: 8px;
     height: 8px;
-    background: white;
+    background: #FF69B4; /* Pink */
     border-radius: 50%;
     cursor: grab;
     margin-top: -3px;
@@ -352,14 +391,13 @@ html, body, #map {
     opacity: 0;
     transition: opacity 0.2s ease-in-out;
     z-index: 2;
-    position: relative;
 }
 
 /* Firefox Volume Slider Thumb */
 .music-player-bar #volume-slider::-moz-range-thumb {
     width: 8px;
     height: 8px;
-    background: white;
+    background: #FF69B4; /* Pink */
     border-radius: 50%;
     cursor: grab;
     box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);

@@ -2,18 +2,21 @@
 <html>
 <head>
   <meta charset="utf-8" />
-  <title>Countdown to Berkeley</title>
+  <title>berkeley countdown</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
   <link rel="stylesheet" href="style.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap" rel="stylesheet">
-</head>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+Bhaina+2:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  </head>
 <body>
 
-<div id="countdown">Days left: <span id="days-left"></span></div>
-<div id="distance">Distance between us: <span id="distance-value"></span></div>
-<div id="days-elapsed-display">Days Elapsed: <span id="days-elapsed-value"></span></div>
-<div id="miles-elapsed-display">Miles Elapsed: <span id="miles-elapsed-value"></span></div>
+<div id="countdown">days left: <span id="days-left"></span></div>
+<div id="distance">distance remaining: <span id="distance-value"></span></div>
+<div id="days-elapsed-display">days passed: <span id="days-elapsed-value"></span></div>
+<div id="miles-elapsed-display">distance traveled: <span id="miles-elapsed-value"></span></div>
 
 <div id="map"></div>
 
@@ -30,11 +33,11 @@
 
     <div class="center-section">
         <div class="controls">
-            <button id="shuffle-btn">🔀</button>
-            <button id="prev-btn">⏮️</button>
-            <button id="play-pause-btn">▶️</button>
-            <button id="next-btn">⏭️</button>
-            <button id="repeat-btn">🔁</button> </div>
+            <button id="shuffle-btn"><i class="fas fa-random"></i></button>
+            <button id="prev-btn"><i class="fas fa-backward"></i></button>
+            <button id="play-pause-btn"><i class="fas fa-play"></i></button>
+            <button id="next-btn"><i class="fas fa-forward"></i></button>
+            <button id="repeat-btn"><i class="fas fa-redo"></i></button> </div>
         <div class="progress-container">
             <span id="current-time">0:00</span>
             <input type="range" id="seek-slider" value="0" max="100">
@@ -44,8 +47,7 @@
 
     <div class="right-section">
         <div class="volume-controls">
-            <button id="volume-icon">🔊</button>
-            <input type="range" id="volume-slider" min="0" max="1" step="0.01" value="0.7">
+            <button id="volume-icon"><i class="fas fa-volume-up"></i></button> <input type="range" id="volume-slider" min="0" max="1" step="0.01" value="0.7">
         </div>
     </div>
 </div>
