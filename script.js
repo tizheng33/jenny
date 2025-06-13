@@ -143,11 +143,9 @@ setInterval(rotateQuotes, 6000);
 
 const audio = new Audio();
 const playlist = [
-    { title: 'SoundHelix Song 1', artist: 'SoundHelix', src: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3', albumArt: 'https://via.placeholder.com/50x50?text=SH1' },
-    { title: 'SoundHelix Song 2', artist: 'SoundHelix', src: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3', albumArt: 'https://via.placeholder.com/50x50?text=SH2' },
-    { title: 'SoundHelix Song 3', artist: 'SoundHelix', src: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3', albumArt: 'https://via.placeholder.com/50x50?text=SH3' },
-    { title: 'SoundHelix Song 4', artist: 'SoundHelix', src: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-4.mp3', albumArt: 'https://via.placeholder.com/50x50?text=SH4' },
-    { title: 'SoundHelix Song 5', artist: 'SoundHelix', src: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-5.mp3', albumArt: 'https://via.placeholder.com/50x50?text=SH5' }
+    { title: 'Fancy', artist: 'Drake, T.I., Swiss Beatz, ft. Tim', src: 'music/fancy.mp3', albumArt: 'icons/jenny1.png' },
+    { title: 'Nights', artist: 'Frank Ocean, ft. Tim', src: 'music/nights.mp3', albumArt: 'icons/jenny2.png' },
+    { title: 'DtMF', artist: 'Bad Bunny, ft. Tim', src: 'music/dtmf.mp3', albumArt: 'icons/jenny3.png' }
 ];
 
 let currentTrackPlayingIndex = 0;
