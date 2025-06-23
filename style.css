@@ -1,4 +1,4 @@
-/* Existing styles (desktop-first approach) */
+/* Existing styles (desktop-first approach) - Keep these as they are */
 html, body, #map {
   height: 100%;
   margin: 0;
@@ -9,7 +9,7 @@ html, body, #map {
   overflow: hidden; /* Prevent scrolling on map */
 }
 
-/* Positioning for countdown, distance, etc. */
+/* Positioning for countdown, distance, etc. - Keep these as they are */
 #countdown,
 #distance,
 #days-elapsed-display,
@@ -28,7 +28,7 @@ html, body, #map {
 #days-elapsed-display { top: 130px; left: 10px; }
 #miles-elapsed-display { top: 190px; left: 10px; }
 
-/* Her quote bubble styles */
+/* Her quote bubble styles - Keep these as they are */
 #her-quote-bubble {
   position: absolute;
   background: white;
@@ -78,7 +78,7 @@ html, body, #map {
     border-radius: 50%;
 }
 
-/* Music Player Bar Styles */
+/* Music Player Bar Styles (Desktop defaults) - Keep these as they are */
 .music-player-bar {
     position: fixed;
     bottom: 0;
@@ -115,7 +115,7 @@ html, body, #map {
 
 .music-player-bar .center-section {
     flex: 2;
-    flex-direction: column; /* Stack controls and progress vertically */
+    flex-direction: column; /* This is where the desktop default stacks controls/progress */
     justify-content: center;
     gap: 0px;
     margin-top: 2px;
@@ -126,7 +126,7 @@ html, body, #map {
     justify-content: flex-end;
 }
 
-/* Song Info (left section) */
+/* Song Info (left section) - Keep these as they are */
 .music-player-bar .song-info {
     display: flex;
     align-items: center;
@@ -166,7 +166,7 @@ html, body, #map {
     max-width: 130px;
 }
 
-/* Controls (center section, top row) */
+/* Controls (center section, top row) - Keep these as they are */
 .music-player-bar .controls {
     display: flex;
     align-items: center;
@@ -174,7 +174,7 @@ html, body, #map {
     margin-top: 2px;
 }
 
-/* Base style for all Font Awesome icon buttons */
+/* Base style for all Font Awesome icon buttons - Keep these as they are */
 .music-player-bar button {
     background-color: transparent;
     border: none;
@@ -196,7 +196,7 @@ html, body, #map {
     border: none;
 }
 
-/* Specific play/pause button overrides */
+/* Specific play/pause button overrides - Keep these as they are */
 #play-pause-btn {
     font-size: 24px;
     color: pink;
@@ -225,14 +225,14 @@ html, body, #map {
     background-color: transparent;
 }
 
-/* Active states for shuffle and repeat */
+/* Active states for shuffle and repeat - Keep these as they are */
 #shuffle-btn.active,
 #repeat-btn.active-all,
 #repeat-btn.active-one {
     color: #FF69B4;
 }
 
-/* Progress bar and time */
+/* Progress bar and time - Keep these as they are */
 .music-player-bar .progress-container {
     display: flex;
     align-items: center;
@@ -251,21 +251,21 @@ html, body, #map {
     appearance: none;
 }
 
-/* Webkit (Chrome/Safari) Seek Slider Track */
+/* Webkit (Chrome/Safari) Seek Slider Track - Keep these as they are */
 .music-player-bar #seek-slider::-webkit-slider-runnable-track {
     background: transparent;
     height: 2px;
     border-radius: 1px;
 }
 
-/* Firefox Seek Slider Track */
+/* Firefox Seek Slider Track - Keep these as they are */
 .music-player-bar #seek-slider::-moz-range-track {
     background: transparent;
     height: 2px;
     border-radius: 1px;
 }
 
-/* Webkit (Chrome/Safari) Seek Slider Thumb */
+/* Webkit (Chrome/Safari) Seek Slider Thumb - Keep these as they are */
 .music-player-bar #seek-slider::-webkit-slider-thumb {
     -webkit-appearance: none;
     width: 8px;
@@ -281,7 +281,7 @@ html, body, #map {
     position: relative;
 }
 
-/* Firefox Seek Slider Thumb */
+/* Firefox Seek Slider Thumb - Keep these as they are */
 .music-player-bar #seek-slider::-moz-range-thumb {
     width: 8px;
     height: 8px;
@@ -294,7 +294,7 @@ html, body, #map {
     z-index: 2;
 }
 
-/* Show Seek Slider Thumb on Hover */
+/* Show Seek Slider Thumb on Hover - Keep these as they are */
 .music-player-bar #seek-slider:hover::-webkit-slider-thumb {
     opacity: 1;
 }
@@ -310,7 +310,7 @@ html, body, #map {
     text-align: center;
 }
 
-/* Volume control */
+/* Volume control - Keep these as they are */
 .music-player-bar .volume-controls {
     display: flex;
     align-items: center;
@@ -328,21 +328,21 @@ html, body, #map {
     appearance: none;
 }
 
-/* Webkit (Chrome/Safari) Volume Slider Track */
+/* Webkit (Chrome/Safari) Volume Slider Track - Keep these as they are */
 .music-player-bar #volume-slider::-webkit-slider-runnable-track {
     background: transparent;
     height: 2px;
     border-radius: 1px;
 }
 
-/* Firefox Volume Slider Track */
+/* Firefox Volume Slider Track - Keep these as they are */
 .music-player-bar #volume-slider::-moz-range-track {
     background: transparent;
     height: 2px;
     border-radius: 1px;
 }
 
-/* Webkit (Chrome/Safari) Volume Slider Thumb */
+/* Webkit (Chrome/Safari) Volume Slider Thumb - Keep these as they are */
 .music-player-bar #volume-slider::-webkit-slider-thumb {
     -webkit-appearance: none;
     width: 8px;
@@ -357,7 +357,7 @@ html, body, #map {
     z-index: 2;
 }
 
-/* Firefox Volume Slider Thumb */
+/* Firefox Volume Slider Thumb - Keep these as they are */
 .music-player-bar #volume-slider::-moz-range-thumb {
     width: 8px;
     height: 8px;
@@ -370,7 +370,7 @@ html, body, #map {
     z-index: 2;
 }
 
-/* Show Volume Slider Thumb on Hover */
+/* Show Volume Slider Thumb on Hover - Keep these as they are */
 .music-player-bar #volume-slider:hover::-webkit-slider-thumb {
     opacity: 1;
 }
@@ -390,100 +390,158 @@ html, body, #map {
   /* Reposition countdown and distance for better mobile visibility */
   #countdown {
     top: auto;
-    bottom: 95px; /* Position above music player */
-    left: 50%;
-    transform: translateX(-50%);
+    bottom: 80px; /* Adjust this value, will depend on music bar min-height */
+    left: 10px; /* Keep it left-aligned */
+    transform: none; /* Remove translateX centering */
     padding: 8px 12px;
-    font-size: 0.85em;
-    white-space: nowrap; /* Prevent text wrapping */
+    font-size: 0.8em; /* Slightly smaller font */
+    white-space: nowrap;
   }
 
   #distance {
     top: auto;
-    bottom: 155px; /* Position above countdown */
-    left: 50%;
-    transform: translateX(-50%);
+    bottom: 120px; /* Adjust this value, above countdown */
+    left: 10px; /* Keep it left-aligned */
+    transform: none; /* Remove translateX centering */
     padding: 8px 12px;
-    font-size: 0.85em;
+    font-size: 0.8em; /* Slightly smaller font */
     white-space: nowrap;
   }
 
-  /* Music Player Bar Adjustments */
+  /* Music Player Bar Adjustments for single row */
   .music-player-bar {
-    flex-direction: column; /* Stack items vertically */
-    align-items: center; /* Center items horizontally */
-    padding: 8px 12px; /* Adjust padding for mobile */
-    min-height: 100px; /* Give more vertical space for stacking */
-    justify-content: space-around; /* Distribute space more evenly */
+    flex-direction: row; /* Keep elements in a row */
+    align-items: center; /* Vertically align content */
+    justify-content: space-between; /* Distribute space between sections */
+    padding: 2px 8px; /* Reduce padding significantly */
+    min-height: 48px; /* Tweak minimum height for single row */
+    gap: 5px; /* Add a small gap between main sections */
   }
 
+  /* Resetting flex orders from previous mobile attempt */
   .music-player-bar .left-section,
-  .music-player-bar .right-section,
-  .music-player-bar .center-section {
-    width: 100%; /* Make each section take full width */
-    justify-content: center; /* Center content within each section */
-    margin: 0; /* Reset margins */
-    padding: 0; /* Reset padding */
-  }
-
-  /* Specific ordering for mobile layout */
-  .music-player-bar .left-section {
-    order: 1; /* Song info at the top */
-    margin-bottom: 5px; /* Space below song info */
-    padding-left: 10px; /* Small indent to accommodate album art better */
-    justify-content: flex-start; /* Keep song info aligned left within its full width */
-  }
-
-  .music-player-bar .center-section {
-    order: 2; /* Controls and progress in the middle */
-    margin-bottom: 5px; /* Space below controls/progress */
-  }
-
+  .music-player-bar .center-section,
   .music-player-bar .right-section {
-    order: 3; /* Volume controls at the bottom */
+    order: unset; /* Remove explicit order */
+    margin: 0; /* Remove specific margins */
+    padding: 0; /* Remove specific padding */
+    justify-content: flex-start; /* Default alignment */
+  }
+
+  /* Left Section (Song Info) */
+  .music-player-bar .left-section {
+    flex: 0 0 auto; /* Don't grow, don't shrink, take content width */
+    max-width: 30%; /* Limit width to prevent it from pushing other elements too much */
+    margin-right: 5px; /* Small space after it */
+    overflow: hidden; /* Hide overflow if text is too long */
+  }
+
+  .music-player-bar .album-art {
+    width: 30px; /* Smaller album art */
+    height: 30px;
+    min-width: 30px; /* Ensure it doesn't shrink further */
+  }
+
+  .music-player-bar .song-info {
+    gap: 4px; /* Reduce gap between art and text */
   }
 
   .music-player-bar .song-details {
-      align-items: flex-start; /* Align song title and artist to the left */
-      margin-left: 5px; /* Small gap from album art */
+      align-items: flex-start; /* Keep text aligned left */
+      flex: 1; /* Allow song details to take remaining space in left section */
+      min-width: 0; /* Allow content to shrink */
   }
 
-  .music-player-bar #current-song-title,
+  .music-player-bar #current-song-title {
+      font-size: 0.65em; /* Smaller font */
+      font-weight: 600; /* Slightly less bold */
+      max-width: 100%; /* Important for ellipsis */
+      text-overflow: ellipsis; /* Ensure ellipsis works */
+  }
+
   .music-player-bar #current-song-artist {
-      max-width: 100%; /* Allow full width for text overflow ellipsis to work */
+      font-size: 0.55em; /* Even smaller font */
+      max-width: 100%; /* Important for ellipsis */
+      text-overflow: ellipsis; /* Ensure ellipsis works */
+  }
+
+
+  /* Center Section (Controls and Progress) */
+  .music-player-bar .center-section {
+    flex: 1 1 40%; /* Allow it to grow/shrink, with a base of 40% */
+    min-width: 150px; /* Minimum width to prevent controls from crushing */
   }
 
   .music-player-bar .controls {
-    gap: 15px; /* Increase gap between control buttons for easier tapping */
-    margin-top: 0;
+    gap: 8px; /* Reduce gap between control buttons */
+    margin-top: 0; /* Remove top margin */
   }
 
   #play-pause-btn {
-    font-size: 32px; /* Make play/pause icon larger */
+    font-size: 20px; /* Smaller play/pause button */
+    margin-left: 2px;
+    margin-right: 2px;
+    padding: 0px; /* Remove extra padding */
+  }
+
+  .music-player-bar button { /* General button size */
+    font-size: 12px;
   }
 
   .music-player-bar .progress-container {
-    width: 90%; /* Adjust width of progress container for padding */
+    width: 100%; /* Full width within center section */
+    gap: 4px; /* Reduce gap around slider */
   }
 
   .music-player-bar #seek-slider {
-    flex-grow: 1; /* Allow slider to fill available space */
-    width: auto; /* Remove explicit width */
+    height: 1px; /* Thinner slider */
+  }
+
+  .music-player-bar #seek-slider::-webkit-slider-thumb,
+  .music-player-bar #seek-slider::-moz-range-thumb {
+      width: 6px; /* Smaller thumb */
+      height: 6px;
+      margin-top: -2.5px; /* Adjust thumb position */
+  }
+
+  .music-player-bar #current-time,
+  .music-player-bar #duration {
+      font-size: 0.6em; /* Smaller time display */
+      min-width: 30px; /* Reduce min-width */
+  }
+
+
+  /* Right Section (Volume Controls) */
+  .music-player-bar .right-section {
+    flex: 0 0 auto; /* Don't grow/shrink, take content width */
+    max-width: 25%; /* Limit width for volume controls */
+    margin-left: 5px; /* Small space before it */
   }
 
   .music-player-bar .volume-controls {
-    width: 80%; /* Reduce width for volume controls to give padding */
-    gap: 10px; /* Space between icon and slider */
+    gap: 4px; /* Reduce gap in volume controls */
   }
 
   .music-player-bar #volume-slider {
-    width: auto; /* Allow slider to fill available space */
-    flex-grow: 1; /* Make volume slider take available space */
+    width: 40px; /* Smaller volume slider */
+    height: 1px; /* Thinner slider */
   }
+
+  .music-player-bar #volume-slider::-webkit-slider-thumb,
+  .music-player-bar #volume-slider::-moz-range-thumb {
+      width: 6px; /* Smaller thumb */
+      height: 6px;
+      margin-top: -2.5px; /* Adjust thumb position */
+  }
+
+  .music-player-bar #volume-icon {
+    font-size: 12px; /* Smaller volume icon */
+  }
+
 
   /* Adjust map padding for mobile - corresponds to new music bar height */
   html, body, #map {
-    padding-bottom: 100px; /* Adjust for the new taller music player height */
+    padding-bottom: 55px; /* Match new music bar height + a little extra */
   }
 }
 
@@ -491,36 +549,66 @@ html, body, #map {
 @media (max-width: 400px) {
   #countdown,
   #distance {
-    font-size: 0.75em;
-    padding: 5px 8px;
+    font-size: 0.7em;
+    padding: 4px 6px;
+    /* Adjust bottom values if the bar shrinks more */
+    bottom: 70px;
+  }
+  #distance {
+    bottom: 105px;
   }
 
+
   .music-player-bar {
-    padding: 6px 8px;
-    min-height: 90px;
+    padding: 2px 5px;
+    min-height: 40px; /* Potentially even smaller */
+  }
+
+  .music-player-bar .left-section {
+    max-width: 35%; /* Allow it to take a bit more space if needed */
   }
 
   .music-player-bar .album-art {
-    width: 30px;
-    height: 30px;
+    width: 25px;
+    height: 25px;
+    min-width: 25px;
   }
 
   .music-player-bar #current-song-title {
-    font-size: 0.75em;
+    font-size: 0.6em;
   }
   .music-player-bar #current-song-artist {
-    font-size: 0.65em;
+    font-size: 0.5em;
   }
 
   #play-pause-btn {
-    font-size: 28px;
+    font-size: 18px;
   }
 
   .music-player-bar button {
-    font-size: 12px;
+    font-size: 10px;
   }
 
+  .music-player-bar #seek-slider::-webkit-slider-thumb,
+  .music-player-bar #seek-slider::-moz-range-thumb {
+      width: 5px;
+      height: 5px;
+      margin-top: -2px;
+  }
+
+  .music-player-bar #volume-icon {
+    font-size: 10px;
+  }
+
+  .music-player-bar #volume-slider::-webkit-slider-thumb,
+  .music-player-bar #volume-slider::-moz-range-thumb {
+      width: 5px;
+      height: 5px;
+      margin-top: -2px;
+  }
+
+
   html, body, #map {
-    padding-bottom: 90px; /* Adjust for very small screen music bar height */
+    padding-bottom: 50px; /* Match even smaller music bar height */
   }
 }
