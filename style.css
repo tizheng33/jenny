@@ -1,56 +1,34 @@
+/* Existing styles (desktop-first approach) */
 html, body, #map {
   height: 100%;
   margin: 0;
   padding: 0;
-  padding-bottom: 48px;
+  padding-bottom: 48px; /* Space for the music player */
   font-family: 'Baloo Bhaina 2', cursive;
   font-weight: 500;
+  overflow: hidden; /* Prevent scrolling on map */
 }
 
-#countdown {
-  position: absolute;
-  top: 10px;
-  left: 10px;
-  background: white;
-  padding: 10px 15px;
-  border-radius: 10px;
-  z-index: 1000;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-}
-
-#distance {
-  position: absolute;
-  top: 70px;
-  left: 10px;
-  background: white;
-  padding: 10px 15px;
-  border-radius: 10px;
-  z-index: 1000;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-}
-
-#days-elapsed-display {
-  position: absolute;
-  top: 130px;
-  left: 10px;
-  background: white;
-  padding: 10px 15px;
-  border-radius: 10px;
-  z-index: 1000;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-}
-
+/* Positioning for countdown, distance, etc. */
+#countdown,
+#distance,
+#days-elapsed-display,
 #miles-elapsed-display {
   position: absolute;
-  top: 190px;
-  left: 10px;
   background: white;
   padding: 10px 15px;
   border-radius: 10px;
   z-index: 1000;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  font-size: 0.9em; /* Adjust font size for these boxes */
 }
 
+#countdown { top: 10px; left: 10px; }
+#distance { top: 70px; left: 10px; }
+#days-elapsed-display { top: 130px; left: 10px; }
+#miles-elapsed-display { top: 190px; left: 10px; }
+
+/* Her quote bubble styles */
 #her-quote-bubble {
   position: absolute;
   background: white;
@@ -137,7 +115,7 @@ html, body, #map {
 
 .music-player-bar .center-section {
     flex: 2;
-    flex-direction: column;
+    flex-direction: column; /* Stack controls and progress vertically */
     justify-content: center;
     gap: 0px;
     margin-top: 2px;
@@ -147,7 +125,6 @@ html, body, #map {
     flex: 1;
     justify-content: flex-end;
 }
-
 
 /* Song Info (left section) */
 .music-player-bar .song-info {
@@ -189,7 +166,6 @@ html, body, #map {
     max-width: 130px;
 }
 
-
 /* Controls (center section, top row) */
 .music-player-bar .controls {
     display: flex;
@@ -204,28 +180,26 @@ html, body, #map {
     border: none;
     cursor: pointer;
     padding: 0;
-    transition: color 0.2s ease; /* Transition for Font Awesome color (smooth hover) */
+    transition: color 0.2s ease;
     color: #b3b3b3;
     font-size: 14px;
     outline: none;
-    box-shadow: none; /* Ensure no default box-shadow */
-    filter: none; /* Ensure no default filter */
+    box-shadow: none;
+    filter: none;
 }
 
-/* Specific button hover/focus styles: ONLY color change, no outline/border */
 .music-player-bar button:hover,
 .music-player-bar button:focus,
 .music-player-bar button:active {
-    color: pink; /* Icon color becomes white */
+    color: pink;
     outline: none;
     border: none;
 }
 
-
 /* Specific play/pause button overrides */
 #play-pause-btn {
     font-size: 24px;
-    color: pink; /* Always white for play/pause icon */
+    color: pink;
     border-radius: 50%;
     border: none !important;
     padding: 3px;
@@ -238,34 +212,25 @@ html, body, #map {
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
-    box-shadow: none; /* Start with no box-shadow by default */
-    background-color: transparent; /* Ensure background is transparent by default */
-    /* NEW: Removed the specific transition for transform/filter here,
-       it will now inherit from the general button transition for color. */
-    transition: color 0.2s ease; /* Ensure color transition still applies */
+    box-shadow: none;
+    background-color: transparent;
+    transition: color 0.2s ease;
 }
 
-/* Play/Pause button hover/focus styles - Now matches other buttons */
 #play-pause-btn:hover,
 #play-pause-btn:focus,
 #play-pause-btn:active {
-    /* REMOVED: transform: scale(1.05); */
-    /* REMOVED: filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.8)); */
     outline: none !important;
     border: none !important;
-    background-color: transparent; /* Ensure background stays transparent on hover */
-    /* Color change to white is inherited from .music-player-bar button:hover */
-    /* No box-shadow for play/pause anymore on hover, unless added via general button styles */
+    background-color: transparent;
 }
-
 
 /* Active states for shuffle and repeat */
 #shuffle-btn.active,
 #repeat-btn.active-all,
 #repeat-btn.active-one {
-    color: #FF69B4; /* Pink for active icons */
+    color: #FF69B4;
 }
-
 
 /* Progress bar and time */
 .music-player-bar .progress-container {
@@ -305,7 +270,7 @@ html, body, #map {
     -webkit-appearance: none;
     width: 8px;
     height: 8px;
-    background: #FF69B4; /* Pink */
+    background: #FF69B4;
     border-radius: 50%;
     cursor: grab;
     margin-top: -3px;
@@ -320,7 +285,7 @@ html, body, #map {
 .music-player-bar #seek-slider::-moz-range-thumb {
     width: 8px;
     height: 8px;
-    background: #FF69B4; /* Pink */
+    background: #FF69B4;
     border-radius: 50%;
     cursor: grab;
     box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
@@ -344,7 +309,6 @@ html, body, #map {
     min-width: 55px;
     text-align: center;
 }
-
 
 /* Volume control */
 .music-player-bar .volume-controls {
@@ -383,7 +347,7 @@ html, body, #map {
     -webkit-appearance: none;
     width: 8px;
     height: 8px;
-    background: #FF69B4; /* Pink */
+    background: #FF69B4;
     border-radius: 50%;
     cursor: grab;
     margin-top: -3px;
@@ -397,7 +361,7 @@ html, body, #map {
 .music-player-bar #volume-slider::-moz-range-thumb {
     width: 8px;
     height: 8px;
-    background: #FF69B4; /* Pink */
+    background: #FF69B4;
     border-radius: 50%;
     cursor: grab;
     box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
@@ -413,4 +377,112 @@ html, body, #map {
 
 .music-player-bar #volume-slider:hover::-moz-range-thumb {
     opacity: 1;
+}
+
+/* --- Mobile Responsiveness --- */
+@media (max-width: 768px) { /* Adjust breakpoint as needed */
+  /* Hide some of the informational boxes on smaller screens */
+  #days-elapsed-display,
+  #miles-elapsed-display {
+    display: none;
+  }
+
+  /* Reposition countdown and distance for better mobile visibility */
+  #countdown {
+    top: auto;
+    bottom: 60px; /* Position above music player */
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 8px 12px;
+    font-size: 0.85em;
+    white-space: nowrap; /* Prevent text wrapping */
+  }
+
+  #distance {
+    top: auto;
+    bottom: 110px; /* Position above countdown */
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 8px 12px;
+    font-size: 0.85em;
+    white-space: nowrap;
+  }
+
+  /* Music Player Bar Adjustments */
+  .music-player-bar {
+    flex-wrap: wrap; /* Allow items to wrap to the next line */
+    justify-content: center; /* Center content when wrapped */
+    padding: 8px;
+    min-height: 70px; /* Give more vertical space */
+  }
+
+  .music-player-bar .left-section {
+    flex: 1 1 100%; /* Take full width on small screens */
+    justify-content: center; /* Center song info */
+    margin-bottom: 8px; /* Add some space below song info */
+  }
+
+  .music-player-bar .center-section {
+    flex: 1 1 100%; /* Take full width */
+    order: 3; /* Move to the bottom of the flex container */
+  }
+
+  .music-player-bar .right-section {
+    flex: 1 1 100%; /* Take full width */
+    order: 2; /* Position after left-section and before center-section */
+    justify-content: center; /* Center volume controls */
+    margin-top: 8px; /* Add space above volume controls */
+  }
+
+  .music-player-bar .song-details {
+      align-items: center; /* Center song title and artist */
+  }
+
+  .music-player-bar #current-song-title,
+  .music-player-bar #current-song-artist {
+      max-width: none; /* Allow full width */
+  }
+
+  .music-player-bar .controls {
+    gap: 12px; /* Increase gap between control buttons */
+  }
+
+  #play-pause-btn {
+    font-size: 28px; /* Slightly larger play/pause button */
+  }
+
+  .music-player-bar #seek-slider {
+    width: 100%; /* Full width for seek slider */
+  }
+
+  .music-player-bar .volume-controls {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .music-player-bar #volume-slider {
+    width: 100px; /* Adjust volume slider width */
+  }
+
+  /* Adjust map padding for mobile */
+  html, body, #map {
+    padding-bottom: 70px; /* Adjust for the taller music player */
+  }
+}
+
+/* Optional: Even smaller screens for very narrow phones */
+@media (max-width: 480px) {
+  #countdown,
+  #distance {
+    font-size: 0.8em;
+    padding: 6px 10px;
+  }
+
+  .music-player-bar .left-section {
+    margin-bottom: 4px;
+  }
+
+  .music-player-bar .right-section {
+    margin-top: 4px;
+  }
 }
