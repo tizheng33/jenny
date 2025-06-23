@@ -390,7 +390,7 @@ html, body, #map {
   /* Reposition countdown and distance for better mobile visibility */
   #countdown {
     top: auto;
-    bottom: 60px; /* Position above music player */
+    bottom: 95px; /* Position above music player */
     left: 50%;
     transform: translateX(-50%);
     padding: 8px 12px;
@@ -400,7 +400,7 @@ html, body, #map {
 
   #distance {
     top: auto;
-    bottom: 110px; /* Position above countdown */
+    bottom: 155px; /* Position above countdown */
     left: 50%;
     transform: translateX(-50%);
     padding: 8px 12px;
@@ -410,79 +410,117 @@ html, body, #map {
 
   /* Music Player Bar Adjustments */
   .music-player-bar {
-    flex-wrap: wrap; /* Allow items to wrap to the next line */
-    justify-content: center; /* Center content when wrapped */
-    padding: 8px;
-    min-height: 70px; /* Give more vertical space */
+    flex-direction: column; /* Stack items vertically */
+    align-items: center; /* Center items horizontally */
+    padding: 8px 12px; /* Adjust padding for mobile */
+    min-height: 100px; /* Give more vertical space for stacking */
+    justify-content: space-around; /* Distribute space more evenly */
   }
 
+  .music-player-bar .left-section,
+  .music-player-bar .right-section,
+  .music-player-bar .center-section {
+    width: 100%; /* Make each section take full width */
+    justify-content: center; /* Center content within each section */
+    margin: 0; /* Reset margins */
+    padding: 0; /* Reset padding */
+  }
+
+  /* Specific ordering for mobile layout */
   .music-player-bar .left-section {
-    flex: 1 1 100%; /* Take full width on small screens */
-    justify-content: center; /* Center song info */
-    margin-bottom: 8px; /* Add some space below song info */
+    order: 1; /* Song info at the top */
+    margin-bottom: 5px; /* Space below song info */
+    padding-left: 10px; /* Small indent to accommodate album art better */
+    justify-content: flex-start; /* Keep song info aligned left within its full width */
   }
 
   .music-player-bar .center-section {
-    flex: 1 1 100%; /* Take full width */
-    order: 3; /* Move to the bottom of the flex container */
+    order: 2; /* Controls and progress in the middle */
+    margin-bottom: 5px; /* Space below controls/progress */
   }
 
   .music-player-bar .right-section {
-    flex: 1 1 100%; /* Take full width */
-    order: 2; /* Position after left-section and before center-section */
-    justify-content: center; /* Center volume controls */
-    margin-top: 8px; /* Add space above volume controls */
+    order: 3; /* Volume controls at the bottom */
   }
 
   .music-player-bar .song-details {
-      align-items: center; /* Center song title and artist */
+      align-items: flex-start; /* Align song title and artist to the left */
+      margin-left: 5px; /* Small gap from album art */
   }
 
   .music-player-bar #current-song-title,
   .music-player-bar #current-song-artist {
-      max-width: none; /* Allow full width */
+      max-width: 100%; /* Allow full width for text overflow ellipsis to work */
   }
 
   .music-player-bar .controls {
-    gap: 12px; /* Increase gap between control buttons */
+    gap: 15px; /* Increase gap between control buttons for easier tapping */
+    margin-top: 0;
   }
 
   #play-pause-btn {
-    font-size: 28px; /* Slightly larger play/pause button */
+    font-size: 32px; /* Make play/pause icon larger */
+  }
+
+  .music-player-bar .progress-container {
+    width: 90%; /* Adjust width of progress container for padding */
   }
 
   .music-player-bar #seek-slider {
-    width: 100%; /* Full width for seek slider */
+    flex-grow: 1; /* Allow slider to fill available space */
+    width: auto; /* Remove explicit width */
   }
 
   .music-player-bar .volume-controls {
-    width: 100%;
-    justify-content: center;
+    width: 80%; /* Reduce width for volume controls to give padding */
+    gap: 10px; /* Space between icon and slider */
   }
 
   .music-player-bar #volume-slider {
-    width: 100px; /* Adjust volume slider width */
+    width: auto; /* Allow slider to fill available space */
+    flex-grow: 1; /* Make volume slider take available space */
   }
 
-  /* Adjust map padding for mobile */
+  /* Adjust map padding for mobile - corresponds to new music bar height */
   html, body, #map {
-    padding-bottom: 70px; /* Adjust for the taller music player */
+    padding-bottom: 100px; /* Adjust for the new taller music player height */
   }
 }
 
-/* Optional: Even smaller screens for very narrow phones */
-@media (max-width: 480px) {
+/* Optional: Even smaller screens for very narrow phones (e.g., iPhone SE) */
+@media (max-width: 400px) {
   #countdown,
   #distance {
-    font-size: 0.8em;
-    padding: 6px 10px;
+    font-size: 0.75em;
+    padding: 5px 8px;
   }
 
-  .music-player-bar .left-section {
-    margin-bottom: 4px;
+  .music-player-bar {
+    padding: 6px 8px;
+    min-height: 90px;
   }
 
-  .music-player-bar .right-section {
-    margin-top: 4px;
+  .music-player-bar .album-art {
+    width: 30px;
+    height: 30px;
+  }
+
+  .music-player-bar #current-song-title {
+    font-size: 0.75em;
+  }
+  .music-player-bar #current-song-artist {
+    font-size: 0.65em;
+  }
+
+  #play-pause-btn {
+    font-size: 28px;
+  }
+
+  .music-player-bar button {
+    font-size: 12px;
+  }
+
+  html, body, #map {
+    padding-bottom: 90px; /* Adjust for very small screen music bar height */
   }
 }
