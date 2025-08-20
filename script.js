@@ -5,7 +5,7 @@ const anaheim = [33.8239, -117.9186];
 
 // Countdown logic
 const startDate = new Date("2025-05-25T00:00:00-07:00");
-const endDate = new Date("2025-08-23T00:00:00-07:00");
+const endDate = new Date("2025-08-24T00:00:00-07:00");
 const today = new Date();
 today.setHours(0, 0, 0, 0);
 
